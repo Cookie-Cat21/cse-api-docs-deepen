@@ -1,5 +1,12 @@
 # CSE (cse.lk) API — deepen pack
 
+> **ARCHIVED 2026-09-14.** This pack's 5 endpoints (topGainers, topLooses,
+> 52WeekSectors, tradeSummary, getAnnouncementByCompany) are redundant with
+> the main [cse-api-docs](https://github.com/Cookie-Cat21/cse-api-docs)
+> repo, which already covers all of them plus 32 more, using a purpose-built
+> probe script instead of the generic shared harness. Use that repo going
+> forward — this one is kept read-only for history.
+
 > Unofficial live-probed API documentation.
 > **Not affiliated** with the upstream operator. Data may change without notice.
 
