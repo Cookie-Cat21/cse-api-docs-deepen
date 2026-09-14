@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-14
+
+- **Changed** `get_announcement_by_company`
+
 Automated from `catalog/endpoints.yaml` via `scripts/update-api-catalog-changelog.py` (and `.github/workflows/catalog-changelog.yml` after extraction).
 
 ## 2026-07-20

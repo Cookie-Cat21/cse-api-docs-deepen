@@ -1,5 +1,5 @@
 {
-  "sha256": "38bde269732f80d57e8c8bae1aff4fc6a6bbab668d1c49691923d27d77fb6006",
+  "sha256": "d3303b902aac52a00bed0e11fc890efde896eab600dab7e2dabfd7a907960a1b",
   "endpoint_count": 5,
   "endpoints": {
     "get_announcement_by_company": {
@@ -9,7 +9,7 @@
       "url": "https://www.cse.lk/api/getAnnouncementByCompany",
       "status": "live",
       "access": "json_api",
-      "summary": "Company announcements by symbol.",
+      "summary": "Company announcements by symbol. Root cause of the earlier 400 - this endpoint needs a FORM-encoded body (application/x-www-form-urlencoded), not JSON, plus fromDate/toDate fields (symbol alone isn't enough). Found by comparing against the working copy of this same endpoint in the sibling cse-api-docs repo, which uses a custom probe script. Added body_form support to this repo's own scripts/probe.py (each repo has its own independent copy, so this doesn't touch the other ~40 Lankawa repos). Verified 2026-09-14.",
       "pagination": null
     },
     "sector_52_week": {
@@ -59,6 +59,5 @@
         "lab": true
       }
     }
-  },
-  "updated": "2026-07-20"
+  }
 }
