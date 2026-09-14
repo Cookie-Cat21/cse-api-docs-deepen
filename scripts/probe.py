@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,9 +38,13 @@ def main() -> None:
         method = ep.get("method", "GET")
         url = ep["url"]
         body = None
+        headers = dict(ep.get("headers") or {})
         if ep.get("body_json") is not None:
             body = json.dumps(ep["body_json"]).encode()
-        status, text = fetch(url, method=method, body=body, headers=ep.get("headers"))
+        elif ep.get("body_form") is not None:
+            body = urllib.parse.urlencode(ep["body_form"]).encode()
+            headers.setdefault("Content-Type", "application/x-www-form-urlencoded")
+        status, text = fetch(url, method=method, body=body, headers=headers)
         sample_path = SAMPLES / f"{ep['id']}.json"
         try:
             parsed = json.loads(text)

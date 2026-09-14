@@ -46,7 +46,16 @@ endpoints:
   method: POST
   url: https://www.cse.lk/api/getAnnouncementByCompany
   path: /getAnnouncementByCompany
-  body_json:
+  body_form:
     symbol: JKH.N0000
-  summary: Company announcements by symbol.
+    fromDate: "2026-01-01"
+    toDate: "2026-07-12"
+  summary: Company announcements by symbol. Root cause of the earlier 400 -
+    this endpoint needs a FORM-encoded body (application/x-www-form-urlencoded),
+    not JSON, plus fromDate/toDate fields (symbol alone isn't enough). Found by
+    comparing against the working copy of this same endpoint in the sibling
+    cse-api-docs repo, which uses a custom probe script. Added body_form
+    support to this repo's own scripts/probe.py (each repo has its own
+    independent copy, so this doesn't touch the other ~40 Lankawa repos).
+    Verified 2026-09-14.
   access: json_api
